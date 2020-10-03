@@ -10,6 +10,7 @@
           placeholder="description"
           v-model="newTask"
           class="form-control"
+          @keyup.enter="addTask"
         />
         <div class="input-group-append">
           <button type="button" class="btn btn-primary" @click="addTask()">
