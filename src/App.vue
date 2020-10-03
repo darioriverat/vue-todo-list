@@ -4,9 +4,15 @@
 
     <div class="container mt-5">
       <h2>Todo List</h2>
-
+      <input
+        type="text"
+        placeholder="description"
+        v-model="newTask"
+        class="form-control"
+      />
+      <button class="btn btn-primary" @click="addTask()">Add Task</button>
       <ul>
-        <li v-for="task in tasks" :key="task">{{ task.text }}</li>
+        <li v-for="task in tasks" :key="task.text">{{ task.text }}</li>
       </ul>
     </div>
   </div>
@@ -36,7 +42,18 @@ export default {
           done: false,
         },
       ],
+      newTask: null,
     };
+  },
+  methods: {
+    addTask: function() {
+      if (this.newTask.trim()) {
+        this.tasks.push({
+          text: this.newTask,
+          done: false,
+        });
+      }
+    },
   },
 };
 </script>
