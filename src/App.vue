@@ -12,12 +12,34 @@
           class="form-control"
         />
         <div class="input-group-append">
-          <button class="btn btn-primary" @click="addTask()">Add Task</button>
+          <button type="button" class="btn btn-primary" @click="addTask()">
+            Add Task
+          </button>
         </div>
       </div>
       <ul class="list-group">
-        <li v-for="task in tasks" :key="task.text" class="list-group-item">
-          {{ task.text }}
+        <li
+          v-for="(task, index) in tasks"
+          :key="task.text"
+          class="list-group-item d-flex justify-content-between align-items-center"
+        >
+          <span :class="task.done ? 'done' : ''">{{ task.text }}</span>
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-success"
+              @click="task.done = !task.done"
+            >
+              Check
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              @click="deleteTask(index)"
+            >
+              Delete
+            </button>
+          </div>
         </li>
       </ul>
     </div>
@@ -61,8 +83,15 @@ export default {
         this.newTask = "";
       }
     },
+    deleteTask: function(index) {
+      this.tasks.splice(index, 1);
+    },
   },
 };
 </script>
 
-<style></style>
+<style>
+.done {
+  text-decoration: line-through;
+}
+</style>
