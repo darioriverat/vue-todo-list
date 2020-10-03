@@ -2,17 +2,23 @@
   <div id="app">
     <nav-bar></nav-bar>
 
-    <div class="container mt-5">
+    <div class="container mt-5 jumbotron">
       <h2>Todo List</h2>
-      <input
-        type="text"
-        placeholder="description"
-        v-model="newTask"
-        class="form-control"
-      />
-      <button class="btn btn-primary" @click="addTask()">Add Task</button>
-      <ul>
-        <li v-for="task in tasks" :key="task.text">{{ task.text }}</li>
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="description"
+          v-model="newTask"
+          class="form-control"
+        />
+        <div class="input-group-append">
+          <button class="btn btn-primary" @click="addTask()">Add Task</button>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li v-for="task in tasks" :key="task.text" class="list-group-item">
+          {{ task.text }}
+        </li>
       </ul>
     </div>
   </div>
