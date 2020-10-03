@@ -48,7 +48,7 @@ export default {
           done: false,
         },
       ],
-      newTask: null,
+      newTask: "",
     };
   },
   methods: {
@@ -58,6 +58,7 @@ export default {
           text: this.newTask,
           done: false,
         });
+        this.newTask = "";
       }
     },
   },
