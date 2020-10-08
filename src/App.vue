@@ -2,18 +2,7 @@
   <div id="app">
     <div class="container mt-5 jumbotron">
       <h2>Todo List</h2>
-      <div class="input-group">
-        <input
-          type="text"
-          placeholder="description"
-          v-model="newTask"
-          class="form-control"
-          @keyup.enter="addTask"
-        />
-        <div class="input-group-append">
-          <base-button type="primary" @click="addTask()">Add Task</base-button>
-        </div>
-      </div>
+      <new-task :tasks="tasks"></new-task>
       <ul class="list-group">
         <li
           v-for="(task, index) in tasks"
@@ -37,10 +26,12 @@
 
 <script>
 import BaseButton from "./components/BaseButton";
+import NewTask from "./components/NewTask";
 
 export default {
   name: "App",
   components: {
+    NewTask,
     BaseButton,
   },
   data: function() {
@@ -59,19 +50,9 @@ export default {
           done: false,
         },
       ],
-      newTask: "",
     };
   },
   methods: {
-    addTask: function() {
-      if (this.newTask.trim()) {
-        this.tasks.push({
-          text: this.newTask,
-          done: false,
-        });
-        this.newTask = "";
-      }
-    },
     deleteTask: function(index) {
       this.tasks.splice(index, 1);
     },
