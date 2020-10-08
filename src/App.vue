@@ -33,13 +33,9 @@
             >
               Check
             </button>
-            <button
-              type="button"
-              class="btn btn-danger"
-              @click="deleteTask(index)"
-            >
+            <base-button type="danger" @click="deleteTask(index)">
               Delete
-            </button>
+            </base-button>
           </div>
         </li>
       </ul>
@@ -48,12 +44,12 @@
 </template>
 
 <script>
-import NavBar from "./components/NavBarComponent";
+import BaseButton from "./components/BaseButton";
 
 export default {
   name: "App",
   components: {
-    NavBar,
+    BaseButton,
   },
   data: function() {
     return {
