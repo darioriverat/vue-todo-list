@@ -11,9 +11,7 @@
           @keyup.enter="addTask"
         />
         <div class="input-group-append">
-          <button type="button" class="btn btn-primary" @click="addTask()">
-            Add Task
-          </button>
+          <base-button type="primary" @click="addTask()">Add Task</base-button>
         </div>
       </div>
       <ul class="list-group">
