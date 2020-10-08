@@ -2,37 +2,21 @@
   <div id="app">
     <div class="container mt-5 jumbotron">
       <h2>Todo List</h2>
-      <new-task :tasks="tasks"></new-task>
-      <ul class="list-group">
-        <li
-          v-for="(task, index) in tasks"
-          :key="task.text"
-          class="list-group-item d-flex justify-content-between align-items-center"
-        >
-          <span :class="task.done ? 'done' : ''">{{ task.text }}</span>
-          <div class="btn-group">
-            <base-button type="success" @click="task.done = !task.done"
-              >Check</base-button
-            >
-            <base-button type="danger" @click="deleteTask(index)">
-              Delete
-            </base-button>
-          </div>
-        </li>
-      </ul>
+      <new-task :tasks="tasks" />
+      <tasks-list :tasks="tasks" />
     </div>
   </div>
 </template>
 
 <script>
-import BaseButton from "./components/BaseButton";
 import NewTask from "./components/NewTask";
+import TasksList from "./components/TasksList";
 
 export default {
   name: "App",
   components: {
     NewTask,
-    BaseButton,
+    TasksList,
   },
   data: function() {
     return {
@@ -51,11 +35,6 @@ export default {
         },
       ],
     };
-  },
-  methods: {
-    deleteTask: function(index) {
-      this.tasks.splice(index, 1);
-    },
   },
 };
 </script>
