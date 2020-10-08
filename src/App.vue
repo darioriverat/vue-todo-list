@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-
     <div class="container mt-5 jumbotron">
       <h2>Todo List</h2>
       <div class="input-group">
@@ -26,13 +24,9 @@
         >
           <span :class="task.done ? 'done' : ''">{{ task.text }}</span>
           <div class="btn-group">
-            <button
-              type="button"
-              class="btn btn-success"
-              @click="task.done = !task.done"
+            <base-button type="success" @click="task.done = !task.done"
+              >Check</base-button
             >
-              Check
-            </button>
             <base-button type="danger" @click="deleteTask(index)">
               Delete
             </base-button>
